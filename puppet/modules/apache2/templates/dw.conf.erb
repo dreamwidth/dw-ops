@@ -1,0 +1,18 @@
+###############################################################################
+# Dreamwidth Apache2 site configuration
+###############################################################################
+
+User dw
+Group dw
+UseCanonicalName off
+
+StartServers 3
+MaxSpareServers 5
+MinSpareServers 1
+MaxClients 2
+MaxRequestsPerChild 200
+
+DocumentRoot /home/dw/current/htdocs
+PerlSetEnv  LJHOME /home/dw/current
+PerlPassEnv LJHOME
+PerlRequire  /home/dw/current/cgi-bin/modperl.pl

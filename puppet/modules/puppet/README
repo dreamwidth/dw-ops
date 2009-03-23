@@ -1,0 +1,21 @@
+This module provides very simple management of the Puppet client and server
+systems.
+
+Puppet Client:
+  * Installs /etc/puppet/puppetd.conf
+  * Ensures that the puppet client service is running
+
+Puppet Server:
+  * Installs /etc/puppet/puppetmasterd.conf
+  * Creates (if necessary) various Puppet directories
+  * Ensures that the puppetmaster service is running
+
+How to use:
+
+include puppet
+puppet::client { $hostname: ensure => present } # for a puppet client
+puppet::server { $hostname: ensure => present } # for a puppet server
+
+How to modify:
+
+Modify the puppetd.conf or puppetmasterd.conf files in the files directory.

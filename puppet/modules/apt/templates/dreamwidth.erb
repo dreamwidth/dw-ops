@@ -1,0 +1,8 @@
+deb http://<%= apt_uri %>/ubuntu/ <%= ubuntu_release %> main restricted universe
+deb-src http://<%= apt_uri %>/ubuntu/ <%= ubuntu_release %> main restricted universe
+
+deb http://<%= apt_uri %>/ubuntu/ <%= ubuntu_release %>-updates main restricted universe
+deb-src http://<%= apt_uri %>/ubuntu/ <%= ubuntu_release %>-updates main restricted universe
+
+deb http://<%= apt_uri %>/ubuntu <%= ubuntu_release %>-security main restricted universe
+deb-src http://<%= apt_uri %>/ubuntu <%= ubuntu_release %>-security main restricted universe

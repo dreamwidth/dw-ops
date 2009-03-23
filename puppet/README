@@ -1,0 +1,54 @@
+Initial Puppet configuration for Dreamwidth
+Xenacryst, 16-MAR-2009
+
+For puppetmaster installation/bootstrapping, see INSTALLATION.
+
+This Puppet specification does basic initialization of a new Dreamwidth
+node.  The original node bootstrapping procedure is defined in the wiki
+notes:
+
+http://wiki.dwscoalition.org/notes/Production_Puppet
+
+This specification encodes that procedure in a Puppet configuration, with
+the following notes:
+
+"dw" user:
+  * The "dw" user is set up using UID 1000 and GID 1000 (group "dw")
+  * The sudo line is appended to /etc/sudoers if not present
+
+apt:
+  * The /etc/apt/sources.list file is installed as noted.
+  * The apt module is written to allow for alternate source hosts and port
+    numbers as well as different Ubuntu distributions (e.g. "hardy",
+    "intrepid").  See the module documentation for details.
+
+system update/upgrade:
+  * Not performed.  This should be done by hand at installation.
+
+package installation:
+  * Performed as part of the serverclass::dreamwidth base server.
+  * Note that apache2 and the MPM package are installed with the apache2
+    module and should NOT be specified in the serverclass modules
+    (duplicate package specifications throws an error in Puppet).
+
+Apache configuration:
+  * Performed in the apache2 module, which is only included in the
+    "webserver" server class.
+  * Note that this module puts configuration snippets in
+    /etc/apache2/conf.d rather than building a single apache2.conf file.
+    The apache2::dreamwidth class duplicates the stock Ubuntu installation
+    along with the changes noted in the wiki for Dreamwidth in this style.
+    See the module documentation for details.
+
+iptables:
+  * The /etc/iptables.up.rules file is installed as specified.
+  * Rather than add a line to /etc/network/interfaces, we put a short
+    script in /etc/network/if-pre-up.d that loads the iptables rules.
+  * iptables is reloaded when new rules are pushed out; see the module
+    documentation on how to change the rules.
+
+See the documentation in manifests/site.pp for instructions on how to add
+new hosts (nodes).  If a node is not found in site.pp, a default node
+definition will be applied: this is the "nonwebserver" server class node
+(Dreamwidth definitions as above, but without Apache configuration and the
+apache2 service disabled).

@@ -1,0 +1,33 @@
+Boostrapping the Puppet service:
+
+Note: this assumes that the Puppet master is running on a host with a name
+(or CNAME) of puppet.$domainname (e.g.: puppet.dreamwidth.org).  If this is
+not the case, the client will need to be told where the Puppet server is
+before the service will start and request a certificate from the master.
+
+For the Puppet master node, the following must be done:
+
+  * Install puppetmaster ("apt-get install puppetmaster").
+  * Copy etc/puppetmasterd.conf to /etc/puppet/puppetmasterd.conf.
+  * Copy the manifests directory to /etc/puppet/manifests.
+  * Copy the modules directory to /var/lib/puppet/modules.
+  * Restart the puppetmaster service ("/etc/init.d/puppetmaster restart").
+
+Ideally, the manifests and modules directories will be kept in revision
+control and installed via a checkout/update procedure.  Note that on the
+puppet master node, the puppetmasterd.conf file will be reloaded from
+puppet after the system is set up and that node added (see notes in
+manifests/site.pp).
+
+Once the Puppet master is running, new nodes can be added with the
+following procedure:
+
+  * Add the new node name to manifests/site.pp on the master
+  * apt-get update (to get the latest package information)
+  * apt-get dist-upgrade (to upgrade packages)
+  * apt-get install puppet
+  * On the puppet master, sign the new certificate
+    ("puppetca --sign newnode.dreamwidth.org")
+  * restart the puppet service ("/etc/init.d/puppet restart") -- this
+    should load the manifest for the node, installing any new packages and
+    configuring the rest of the system.

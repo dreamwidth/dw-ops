@@ -1,0 +1,37 @@
+This module is copied with minimal modification from the public module for
+Debian/Ubuntu-based Apache2 installations (v0.4).  That module is available
+here:
+
+  http://code.google.com/p/wesabe/
+
+Changes from the wesabe module:
+
+  * Change the base.conf.erb file to be more like Ubuntu (using
+    environment variables for user, group, pid file).
+  * Add the mpm-prefork.conf.erb config file, copied from stock
+    Ubuntu Apache2 installation.
+  * Add ports.conf.erb for Listen directives, copied from stock
+    Ubuntu Apache2 installation.
+  * Add sercurity.conf.erb for a copy of stock Ubuntu Apache2
+    security directives
+  * Add dw.conf.erb that contains the default Dreamwidth configuration
+    snippet.
+
+Differences from stock Ubuntu Apache2:
+
+The default Apache2 installation on Ubuntu (Intrepid, at least) specifies
+everything in /etc/apache2/apache2.conf and then includes all files in
+/etc/apache2/conf.d as configuration snippets.  This changes that behavior
+to specify a very minimal apache2.conf which includes files in conf.d that
+are named *.conf.  Base configurations are then loaded in order as they
+appear in that directory:
+
+  NNN-name.conf
+
+Within the apache2::dreamwidth class, we mimic the default installation of
+Apache2 on Intrepid with these configuration snippets, and then add the
+Dreamwidth specific snippet as 999-dw.conf so that it is loaded last.
+
+The sites-enabled/available and mods-enabled/available directories are
+managed as usuale, with a2{en,dis}site and a2{en,dis}mod called to enable
+and disable sites and modules.

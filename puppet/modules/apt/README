@@ -1,0 +1,31 @@
+This is a very simple module that installs /etc/apt/sources.list.  The
+default class replicates the Ubuntu Intrepid contents.
+
+How to use
+
+  * Create a class that inherits from "apt".
+  * Use the apt::sources function to specify contents for sources.list
+
+apt::sources
+  Arguments:
+    host: the hostname portion of the URL to load packages from (required)
+    port: an alternate port to access for loading packages from the
+      specified host (if not present, none is used)
+    release: the Ubuntu release name, e.g.: "hardy", "intrepid" (required)
+    content: alternate specification for the file contents.
+
+  This loads the $name.erb template, replacing the template values with
+  those given by host, port, and release and saves it as
+  /etc/apt/sources.list.
+
+Example:
+
+# This uses the standard Ubuntu sources.list template, but points it at a
+# local cache host running on port 8080, and requests the Hardy release.
+class apt::mysources inherits apt {
+    apt::sources { "default":
+	host => "localcache.example.org",
+	port => "8080",
+	release => "hardy"
+    }
+}

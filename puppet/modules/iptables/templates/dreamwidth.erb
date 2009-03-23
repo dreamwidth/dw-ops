@@ -1,0 +1,35 @@
+###############################################################################
+# Dreamwidth iptables rules
+# Note: this must be changed whenever a new host is added
+# Initially copied from Mark's notes.
+###############################################################################
+
+*filter
+
+# Allows all loopback (lo0) traffic and drop all 
+# traffic to 127/8 that doesn't use lo0
+-A INPUT -i lo -j ACCEPT
+-A INPUT -i ! lo -d 127.0.0.0/8 -j REJECT
+
+# Accept inbound private traffic from one of our servers
+-A INPUT -s 172.19.1.5 -j ACCEPT
+-A INPUT -s 172.19.1.84 -j ACCEPT
+-A INPUT -s 172.19.1.85 -j ACCEPT
+-A INPUT -s 172.19.1.86 -j ACCEPT
+-A INPUT -s 172.19.1.87 -j ACCEPT
+-A INPUT -s 172.19.1.88 -j ACCEPT
+-A INPUT -s 172.19.1.89 -j ACCEPT
+-A INPUT -s 172.19.1.90 -j ACCEPT
+-A INPUT -s 172.19.1.91 -j ACCEPT
+
+# Accepts all established inbound connections
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+# Allows all outbound traffic
+-A OUTPUT -j ACCEPT
+
+# Reject all other inbound - default deny unless explicitly allowed policy
+-A INPUT -j REJECT
+-A FORWARD -j REJECT
+
+COMMIT

@@ -1,0 +1,19 @@
+Simple management of iptables rules
+
+This module does the following:
+
+  * Installs an iptables rule set as /etc/iptables.up.rules.
+  * Installs a script /etc/network/if-pre-up.d/iptables that loads the
+    former file at network initialization.
+  * Runs /sbin/iptables-restore to load the iptables rules any time
+    iptables.up.rules changes.
+
+To modify the rules:
+
+  * Modify the template file in the templates directory that includes the
+    iptables rules (for Dreamwidth, this is templates/dreamwidth.erb).
+
+To extend:
+
+  * Create a class that inherits from iptables.
+  * Use the rules() function as indicated in init.pp

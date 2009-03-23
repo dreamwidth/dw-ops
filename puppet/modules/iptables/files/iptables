@@ -1,0 +1,8 @@
+#!/bin/sh
+# Load iptables rules
+# Xenacryst, 10-MAR-2009
+
+if [ -f /etc/iptables.up.rules ]; then
+    /sbin/iptables-restore < /etc/iptables.up.rules
+    exit 0
+fi
