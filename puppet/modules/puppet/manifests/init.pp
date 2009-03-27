@@ -18,7 +18,7 @@ class puppet {
 	    default => $source
 	}
 
-	service { puppet:
+	service { puppetd:
 	    ensure => running,
 	    require => File["/etc/puppet/puppetd.conf"]
 	}
