@@ -14,7 +14,7 @@ class puppet {
         $source = ''
     ) {
         $real_source = $source ? {
-            '' => "puppet://$servername/puppet/puppetd.conf",
+            '' => "puppet://$server/puppet/puppetd.conf",
             default => $source
         }
 
@@ -44,7 +44,7 @@ class puppet {
         $source = ''
     ) {
         $real_source = $source ? {
-            '' => "puppet://$servername/puppet/puppetmasterd.conf",
+            '' => "puppet://$server/puppet/puppetmasterd.conf",
             default => $source
         }
 

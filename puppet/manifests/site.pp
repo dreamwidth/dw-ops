@@ -40,6 +40,11 @@ define line($file, $line, $ensure = 'present') {
 ###############################################################################
 # DREAMWIDTH SITE SPECIFICATION
 #
+#
+# define server, used in some templates.  note that we can't use $servername
+# in the particular setup DW is using...
+$server = 'puppet'
+
 # Import the standard Dreamwidth server classes
 import "serverclass/*"
 

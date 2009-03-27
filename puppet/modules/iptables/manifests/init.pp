@@ -23,7 +23,7 @@ class iptables {
         mode => 755,
         owner => root,
         group => root,
-        source => "puppet://$servername/iptables/iptables"
+        source => "puppet://$server/iptables/iptables"
     }
 
     # run the iptables-restore program to reload the rules

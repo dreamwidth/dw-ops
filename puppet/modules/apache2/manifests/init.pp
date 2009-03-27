@@ -86,7 +86,7 @@ class apache2 {
           mode => 644,
           owner => root,
           group => root,
-          source => "puppet://$servername/apache2/apache2.conf",
+          source => "puppet://$server/apache2/apache2.conf",
           require => File[$apache_conf],
         }
 
