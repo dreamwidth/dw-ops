@@ -6,8 +6,8 @@
 
 class apt::default inherits apt {
     apt::sources { "default":
-	ensure => present,
-	host => 'us.archive.ubuntu.com',
-	release => 'intrepid'
+        ensure => present,
+        host => 'us.archive.ubuntu.com',
+        release => 'intrepid'
     }
 }

@@ -8,9 +8,9 @@
 class serverclass::nonwebserver inherits serverclass::dreamwidth {
     # make sure Apache is not running
     service { "apache2":
-	ensure => stopped,
-	pattern => "/usr/sbin/apache2",
-	hasstatus => true,
-	hasrestart => true
+        ensure => stopped,
+        pattern => "/usr/sbin/apache2",
+        hasstatus => true,
+        hasrestart => true
     }
 }

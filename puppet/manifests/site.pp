@@ -14,24 +14,24 @@
 #  Other standard arguments (require, notify, etc.) can be present
 # Usage:
 #   line { description:
-# 	file => "filename",
-# 	line => "content",
-# 	ensure => {absent,*present*}
+#         file => "filename",
+#         line => "content",
+#         ensure => {absent,*present*}
 #   }
 #
 define line($file, $line, $ensure = 'present') {
     case $ensure {
-	default : { err ( "unknown ensure value '${ensure}'" ) }
-	present: {
- 	    exec { "/bin/echo '${line}' >> '${file}'":
-		unless => "/bin/grep -qFx '${line}' '${file}'"
-	    }
-	}
-	absent: {
-	    exec { "/usr/bin/perl -ni -e 'print if \$_ ne \"${line}\n\";' '${file}'":
-		onlyif => "/bin/grep -qFx '${line}' '${file}'"
-	    }
-	}
+        default : { err ( "unknown ensure value '${ensure}'" ) }
+        present: {
+             exec { "/bin/echo '${line}' >> '${file}'":
+                unless => "/bin/grep -qFx '${line}' '${file}'"
+            }
+        }
+        absent: {
+            exec { "/usr/bin/perl -ni -e 'print if \$_ ne \"${line}\n\";' '${file}'":
+                onlyif => "/bin/grep -qFx '${line}' '${file}'"
+            }
+        }
     }
 }
 ###############################################################################

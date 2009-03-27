@@ -19,35 +19,35 @@
 class iptables {
     # ensure that the iptables network initialization script is present
     file { "/etc/network/if-pre-up.d/iptables":
-	ensure => present,
-	mode => 755,
-	owner => root,
-	group => root,
-	source => "puppet://$servername/iptables/iptables"
+        ensure => present,
+        mode => 755,
+        owner => root,
+        group => root,
+        source => "puppet://$servername/iptables/iptables"
     }
 
     # run the iptables-restore program to reload the rules
     # only run this when requested (refreshonly)
     exec { "iptables-restore":
-	command => "/sbin/iptables-restore < /etc/iptables.up.rules",
-	refreshonly => true
+        command => "/sbin/iptables-restore < /etc/iptables.up.rules",
+        refreshonly => true
     }
 
     # Load the iptables rules, write the file, and notify the iptables-restore
     # exec to reload the rules
     define rules ( $ensure = 'present', $content = '' ) {
-	$real_content = $content ? {
-		'' => template ("iptables/${name}.erb"),
-		default => $content
-	}
+        $real_content = $content ? {
+                '' => template ("iptables/${name}.erb"),
+                default => $content
+        }
 
-	file { "/etc/iptables.up.rules":
-	    ensure => $ensure,
-	    content => $real_content,
-	    mode => 444,
-	    owner => root,
-	    group => root,
-	    notify => Exec["iptables-restore"]
-	}
+        file { "/etc/iptables.up.rules":
+            ensure => $ensure,
+            content => $real_content,
+            mode => 444,
+            owner => root,
+            group => root,
+            notify => Exec["iptables-restore"]
+        }
     }
 }
