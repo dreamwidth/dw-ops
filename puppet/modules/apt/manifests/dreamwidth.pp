@@ -9,8 +9,8 @@
 class apt::dreamwidth inherits apt {
     apt::sources { "dreamwidth":
 	ensure => present,
-	host => 'dw-lb01',
+	host => 'dfw-admin01',
 	port => '9999',
-	release => 'hardy'
+	release => 'intrepid'
     }
 }
