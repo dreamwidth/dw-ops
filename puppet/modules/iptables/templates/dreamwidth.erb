@@ -32,6 +32,13 @@
 # Allows all outbound traffic
 -A OUTPUT -j ACCEPT
 
+<% if has_variable?("allowed_ports") && !allowed_ports.empty? -%>
+# Allow inbound traffic on certain public ports
+<% allowed_ports.each do |val| -%>
+-A INPUT --proto tcp --dport <%= val %> -j ACCEPT
+<% end -%>
+
+<% end -%>
 # Reject all other inbound - default deny unless explicitly allowed policy
 -A INPUT -j REJECT
 -A FORWARD -j REJECT

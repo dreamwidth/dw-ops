@@ -35,7 +35,7 @@ class iptables {
 
     # Load the iptables rules, write the file, and notify the iptables-restore
     # exec to reload the rules
-    define rules ( $ensure = 'present', $content = '' ) {
+    define rules ( $ensure = 'present', $content = '', $allowed_ports = [] ) {
         $real_content = $content ? {
                 '' => template ("iptables/${name}.erb"),
                 default => $content

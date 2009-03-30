@@ -4,5 +4,5 @@
 ###############################################################################
 
 class iptables::dreamwidth inherits iptables {
-    iptables::rules { "dreamwidth": ensure => present }
+    iptables::rules { "dreamwidth": ensure => present, allowed_ports => [] }
 }
