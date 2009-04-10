@@ -14,8 +14,8 @@
 #
 
 class iptables::dreamwidth::perlbal inherits iptables::dreamwidth {
-    # open up incoming port 80
-    Iptables::Rules["dreamwidth"] { allowed_ports => [ 80 ] }
+    # open up incoming port 80 and 443
+    Iptables::Rules["dreamwidth"] { allowed_ports => [ 80, 443 ] }
 }
 
 class serverclass::perlbal inherits serverclass::dreamwidth {
