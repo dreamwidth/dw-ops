@@ -27,6 +27,10 @@
 -A INPUT -s 10.176.64.137 -j ACCEPT
 -A INPUT -s 10.176.68.231 -j ACCEPT
 -A INPUT -s 10.176.68.212 -j ACCEPT
+-A INPUT -s 10.176.71.86  -j ACCEPT
+-A INPUT -s 10.176.71.88  -j ACCEPT
+-A INPUT -s 10.176.71.89  -j ACCEPT
+-A INPUT -s 10.176.71.90  -j ACCEPT
 
 # Accepts all established inbound connections
 -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
