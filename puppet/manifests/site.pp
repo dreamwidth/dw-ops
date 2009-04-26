@@ -62,6 +62,8 @@ import "serverclass/*"
 node dfw-mail01 { include serverclass::mail    }
 node dfw-lb01   { include serverclass::perlbal }
 node dfw-lb02   { include serverclass::perlbal }
+node dfw-lb03   { include serverclass::perlbal }
+node dfw-lb04   { include serverclass::perlbal }
 
 # A special case exists for the node that will run the Puppet master service.
 # This node can be specified as following:
