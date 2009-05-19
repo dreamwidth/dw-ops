@@ -18,5 +18,5 @@ max_connections         = 1024
 table_cache             = 1024
 
 # innodb tuning
-innodb_buffer_pool_size = 3200M
+innodb_buffer_pool_size = 1600M
 
