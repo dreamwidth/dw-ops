@@ -62,6 +62,14 @@
 -A INPUT -s 10.176.74.79 -j ACCEPT
 -A INPUT -s 10.176.74.80 -j ACCEPT
 
+# Discards all traffic to/from netblocks on Spamhaus drop list
+# ( see http://www.spamhaus.org/drop/ )
+<% droplist = scope.function_template('iptables/spamhaus-drop.erb');
+   droplist.each do |dropnet| -%>
+-A INPUT -s <%= dropnet.chomp %> -j DROP
+-A OUTPUT -d <%= dropnet.chomp %> -j DROP
+<% end -%>
+
 # Accepts all established inbound connections
 -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
