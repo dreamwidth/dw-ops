@@ -62,6 +62,7 @@
 -A INPUT -s 10.176.74.79 -j ACCEPT
 -A INPUT -s 10.176.74.80 -j ACCEPT
 
+<% if has_variable?("allowed_ports") && !allowed_ports.empty? -%>
 # Discards all traffic to/from netblocks on Spamhaus drop list
 # ( see http://www.spamhaus.org/drop/ )
 <% droplist = scope.function_template('iptables/spamhaus-drop.erb');
@@ -70,6 +71,7 @@
 -A OUTPUT -d <%= dropnet.chomp %> -j DROP
 <% end -%>
 
+<% end -%>
 # Accepts all established inbound connections
 -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
