@@ -61,6 +61,7 @@
 -A INPUT -s 10.176.74.78 -j ACCEPT
 -A INPUT -s 10.176.74.79 -j ACCEPT
 -A INPUT -s 10.176.74.80 -j ACCEPT
+-A INPUT -s 10.176.77.95 -j ACCEPT
 
 <% if has_variable?("allowed_ports") && !allowed_ports.empty? -%>
 # Discards all traffic to/from netblocks on Spamhaus drop list
