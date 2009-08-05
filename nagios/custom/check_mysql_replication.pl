@@ -24,11 +24,13 @@ crit( "Replication stopped: IO=$rep->{Slave_IO_Running}, SQL=$rep->{Slave_SQL_Ru
     unless $rep->{Slave_IO_Running} eq 'Yes' &&
            $rep->{Slave_SQL_Running} eq 'Yes';
 
-# very tight limits
+# loose limits because we don't actively use slaves for anything
+# that we care about for realtime serving.  also, the codebase knows
+# how to avoid a slave that is falling behind.
 crit( "Replication very far behind: $rep->{Seconds_Behind_Master}." )
-    if $rep->{Seconds_Behind_Master} > 60;
+    if $rep->{Seconds_Behind_Master} > 3600;
 _warn( "Replication behind: $rep->{Seconds_Behind_Master}." )
-    if $rep->{Seconds_Behind_Master} > 15;
+    if $rep->{Seconds_Behind_Master} > 1800;
 
 ok( 'Replication okay.' );
 
