@@ -18,15 +18,13 @@ class serverclass::dreamwidth {
 
     # Local "dw" user and group
     group { dw:
-        ensure => present,
-        gid => 1000
+        ensure => present
     }
     user { dw:
         ensure => present,
         comment => "Dreamwidth",
         home => "/home/dw",
         managehome => true,
-        uid => 1000,
         gid => "dw",
         shell => "/bin/bash",
         require => Group["dw"]

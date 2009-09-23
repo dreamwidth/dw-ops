@@ -5,5 +5,5 @@
 
 class serverclass::webserver inherits serverclass::dreamwidth {
     # APACHE2 module
-    include apache2::dreamwidth
+#    include apache2::dreamwidth
 }

@@ -1,7 +1,7 @@
 #
-# serverclass::perlbal
+# serverclass::admin
 #
-# Defines functionality for the configuration of the Perlbal machines.
+# Defines functionality for the configuration of the admin machines.
 #
 # Authors:
 #      Mark Smith <mark@dreamwidth.org>
@@ -13,17 +13,17 @@
 # 'perldoc perlartistic' or 'perldoc perlgpl'.
 #
 
-class iptables::dreamwidth::perlbal inherits iptables::dreamwidth {
-    # open up incoming port 80 and 443
-    Iptables::Rules["dreamwidth"] { allowed_ports => [ 80, 443 ] }
+class iptables::dreamwidth::admin inherits iptables::dreamwidth {
+    # open up incoming port 80, 443, 22
+    Iptables::Rules["dreamwidth"] { allowed_ports => [ 80, 443, 22 ] }
 }
 
-class serverclass::perlbal inherits serverclass::dreamwidth {
-    include iptables::dreamwidth::perlbal
+class serverclass::admin inherits serverclass::dreamwidth {
+    include iptables::dreamwidth::admin
 
-    # make sure Apache is not running
+    # make sure Apache is running
     service { "apache2":
-        ensure => stopped,
+        ensure => running,
         pattern => "/usr/sbin/apache2",
         hasstatus => true,
         hasrestart => true

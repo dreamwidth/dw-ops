@@ -15,7 +15,8 @@
 
 class iptables::dreamwidth::mail inherits iptables::dreamwidth {
     # open up incoming port 25
-    Iptables::Rules["dreamwidth"] { allowed_ports => [ 25 ] }
+    # but also a hack for 80 and 443 because our mailserver is a lb node
+    Iptables::Rules["dreamwidth"] { allowed_ports => [ 25, 80, 443 ] }
 }
 
 class serverclass::mail inherits serverclass::dreamwidth {
