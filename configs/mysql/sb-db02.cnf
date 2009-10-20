@@ -1,9 +1,9 @@
 [mysqld]
-bind-address            = 10.176.74.51
+bind-address            = 172.20.6.175
 
-server-id               = 7
-log_bin                 = /var/lib/mysql-binlogs/dfw-db-c01-bin.log
-relay_log               = /var/lib/mysql/dfw-db-c01-relay-bin
+server-id               = 102
+log_bin                 = /var/lib/mysql-binlogs/sb-db02-bin.log
+relay_log               = /var/lib/mysql/sb-db02-relay-bin
 max_binlog_size         = 1G
 expire_logs_days        = 30
 
@@ -18,4 +18,4 @@ max_connections         = 1024
 table_cache             = 1024
 
 # innodb tuning
-innodb_buffer_pool_size = 1600M
+innodb_buffer_pool_size = 8000M

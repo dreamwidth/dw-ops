@@ -1,0 +1,14 @@
+# things we need to be good net citizens
+postmaster: mark@dreamwidth.org
+
+# things that aren't "real" and are discarded
+dw_null:    /dev/null
+
+# now things that we need to deliver to the dw user (aka, stuff in this list
+# foo@dreamwidth.org will get shoved into the database and processed)
+abuse:      dw
+accounts:   dw
+feedback:   dw
+support:    dw
+webmaster:  dw
+privacy:    dw

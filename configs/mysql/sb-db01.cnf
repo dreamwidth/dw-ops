@@ -1,0 +1,27 @@
+[mysqld]
+bind-address            = 172.20.6.169
+
+server-id               = 101
+log_bin                 = /var/lib/mysql-binlogs/sb-db01-bin.log
+relay_log               = /var/lib/mysql/sb-db01-relay-bin
+max_binlog_size         = 1G
+expire_logs_days        = 30
+
+# this is required for the master as we're going to be copying data from
+# the DFW databases, but we don't want to copy the MogileFS cloud as that
+# is not a db replicated cloud.
+replicate-ignore-db     = dw_mogile
+
+log-slave-updates
+
+log_slow_queries        = /var/log/mysql/mysql-slow.log
+long_query_time         = 2
+#log-queries-not-using-indexes
+
+# general purpose tuning
+max_connections         = 1024
+table_cache             = 1024
+query_cache_size        = 0
+
+# innodb tuning
+innodb_buffer_pool_size = 8000M

@@ -1,0 +1,5 @@
+user     = email
+password = email
+hosts    = 172.20.6.169
+dbname   = dw_global
+query    = SELECT rcpt FROM email_aliases WHERE alias = '%s@dreamwidth.org'
