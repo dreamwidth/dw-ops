@@ -33,6 +33,9 @@
 -A OUTPUT -d <%= dropnet.chomp %> -j DROP
 <% end -%>
 
+# Per-host connection limit on port 80
+-A INPUT -p tcp --dport 80 -m connlimit --connlimit-above 20 --connlimit-mask 32 -j DROP
+
 <% end -%>
 # Accepts all established inbound connections
 -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
