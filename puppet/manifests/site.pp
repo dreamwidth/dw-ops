@@ -60,11 +60,13 @@ import "serverclass/*"
 # node nodename { include serverclass::nonwebserver }
 
 node sb-lb02    { include serverclass::mail }
-node sb-lb01    { include serverclass::perlbal }
+#node sb-lb01    { include serverclass::perlbal }
 #node sb-lb02    { include serverclass::perlbal }
+node sb-lb01    { include serverclass::webserver }
 node sb-web01   { include serverclass::webserver }
 node sb-web02   { include serverclass::webserver }
 node sb-web03   { include serverclass::webserver }
+node sb-search01 { include serverclass::webserver }
 node sb-admin01 { include serverclass::admin }
 
 # A special case exists for the node that will run the Puppet master service.
