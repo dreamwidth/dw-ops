@@ -12,15 +12,16 @@
 -A INPUT -i ! lo -d 127.0.0.0/8 -j REJECT
 
 # Accept inbound private traffic from one of our servers
--A INPUT -s 172.20.6.170 -j ACCEPT
--A INPUT -s 172.20.6.173 -j ACCEPT
--A INPUT -s 172.20.6.174 -j ACCEPT
+-A INPUT -s 172.20.6.161 -j ACCEPT
 -A INPUT -s 172.20.6.166 -j ACCEPT
 -A INPUT -s 172.20.6.167 -j ACCEPT
 -A INPUT -s 172.20.6.168 -j ACCEPT
--A INPUT -s 172.20.6.172 -j ACCEPT
--A INPUT -s 172.20.6.171 -j ACCEPT
 -A INPUT -s 172.20.6.169 -j ACCEPT
+-A INPUT -s 172.20.6.170 -j ACCEPT
+-A INPUT -s 172.20.6.171 -j ACCEPT
+-A INPUT -s 172.20.6.172 -j ACCEPT
+-A INPUT -s 172.20.6.173 -j ACCEPT
+-A INPUT -s 172.20.6.174 -j ACCEPT
 -A INPUT -s 172.20.6.175 -j ACCEPT
 -A INPUT -s 172.20.6.176 -j ACCEPT
 
@@ -32,6 +33,12 @@
 -A INPUT -s <%= dropnet.chomp %> -j DROP
 -A OUTPUT -d <%= dropnet.chomp %> -j DROP
 <% end -%>
+
+# TEMP RULE FOR 400 BAD REQUEST SPAMMER
+-A INPUT -s 46.73.220.3/32 -j DROP
+-A OUTPUT -d 46.73.220.3/32 -j DROP
+-A INPUT -s 80.223.173.181/32 -j DROP
+-A OUTPUT -d 80.223.173.181/32 -j DROP
 
 # Per-host connection limit on port 80
 -A INPUT -p tcp --dport 80 -m connlimit --connlimit-above 20 --connlimit-mask 32 -j DROP

@@ -68,6 +68,7 @@ node sb-web02   { include serverclass::webserver }
 node sb-web03   { include serverclass::webserver }
 node sb-search01 { include serverclass::webserver }
 node sb-admin01 { include serverclass::admin }
+node sb-db01    { include serverclass::webserver }
 
 # A special case exists for the node that will run the Puppet master service.
 # This node can be specified as following:
