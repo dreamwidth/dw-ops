@@ -66,6 +66,7 @@ node sb-lb01    { include serverclass::webserver }
 node sb-web01   { include serverclass::webserver }
 node sb-web02   { include serverclass::webserver }
 node sb-web03   { include serverclass::webserver }
+node sb-web04   { include serverclass::webserver }
 node sb-search01 { include serverclass::webserver }
 node sb-admin01 { include serverclass::admin }
 node sb-db01    { include serverclass::webserver }
