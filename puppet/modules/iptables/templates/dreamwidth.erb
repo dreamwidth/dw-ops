@@ -44,7 +44,7 @@
 -A OUTPUT -d 80.223.173.181/32 -j DROP
 
 # Per-host connection limit on port 80
--A INPUT -p tcp --dport 80 -m connlimit --connlimit-above 20 --connlimit-mask 32 -j DROP
+#-A INPUT -p tcp --dport 80 -m connlimit --connlimit-above 20 --connlimit-mask 32 -j DROP
 
 <% end -%>
 # Accepts all established inbound connections

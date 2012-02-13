@@ -1,8 +1,10 @@
-deb http://<%= apt_uri %>/archive.ubuntu.com/ubuntu <%= ubuntu_release %> main restricted universe
-deb-src http://<%= apt_uri %>/archive.ubuntu.com/ubuntu <%= ubuntu_release %> main restricted universe
+deb http://<%= apt_uri %>/old-releases.ubuntu.com/ubuntu <%= ubuntu_release %> main restricted universe
+deb-src http://<%= apt_uri %>/old-releases.ubuntu.com/ubuntu <%= ubuntu_release %> main restricted universe
 
-deb http://<%= apt_uri %>/archive.ubuntu.com/ubuntu <%= ubuntu_release %>-updates main restricted universe
-deb-src http://<%= apt_uri %>/archive.ubuntu.com/ubuntu <%= ubuntu_release %>-updates main restricted universe
+deb http://<%= apt_uri %>/old-releases.ubuntu.com/ubuntu <%= ubuntu_release %>-updates main restricted universe
+deb-src http://<%= apt_uri %>/old-releases.ubuntu.com/ubuntu <%= ubuntu_release %>-updates main restricted universe
 
-deb http://<%= apt_uri %>/security.ubuntu.com/ubuntu <%= ubuntu_release %>-security main restricted universe
-deb-src http://<%= apt_uri %>/security.ubuntu.com/ubuntu <%= ubuntu_release %>-security main restricted universe
+#deb http://<%= apt_uri %>/security.ubuntu.com/ubuntu <%= ubuntu_release %>-security main restricted universe
+#deb-src http://<%= apt_uri %>/security.ubuntu.com/ubuntu <%= ubuntu_release %>-security main restricted universe
+
+deb http://repo.varnish-cache.org/ubuntu/ lucid varnish-3.0
