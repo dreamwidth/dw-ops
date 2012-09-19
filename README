@@ -1,0 +1,14 @@
+This repository contains configuration files used by Dreamwidth on its
+production installation. Things you will find here include various tools
+and files we use to configure Puppet and other such systems.
+
+We welcome you to take a look and see how we do things, although we do not
+promise to update or well document this repository.
+
+This code is also presently unlicensed while we figure out what is the
+appropriate way to license this sort of thing.
+
+If you have any questions, please email mark@dreamwidth.org -- thanks.
+
+--Mark Smith
+Dreamwidth Studios
