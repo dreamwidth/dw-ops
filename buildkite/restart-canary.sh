@@ -2,6 +2,7 @@
 
 export PATH="$PATH:/root/bin"
 
+echo "Restarting canary host..."
 ssh root@web01 "bin/bounce-apache >/dev/null &"
 
 sleep 15

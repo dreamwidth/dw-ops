@@ -3,7 +3,7 @@
 export PATH="$PATH:/root/bin"
 
 for HOST in $(hosts-web | grep -v web01); do
-    echo "Restarting $host..."
+    echo "Restarting $HOST..."
     ssh root@$HOST "bin/bounce-apache >/dev/null &"
 
     sleep 15
